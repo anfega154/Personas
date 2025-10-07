@@ -1,9 +1,12 @@
 package co.com.anfega.model.userbootcamp;
 
+import java.time.LocalDate;
+
 public class UserBootcamp {
     private Long id;
     private Long userId;
     private Long bootcampId;
+    private LocalDate registeredAt;
 
     public UserBootcamp() {
     }
@@ -41,5 +44,13 @@ public class UserBootcamp {
 
     public void setBootcampId(Long bootcampId) {
         this.bootcampId = bootcampId;
+    }
+
+    public LocalDate getRegisteredAt() {
+        return registeredAt;
+    }
+
+    public void setRegisteredAt(LocalDate registeredAt) {
+        this.registeredAt = registeredAt;
     }
 }
