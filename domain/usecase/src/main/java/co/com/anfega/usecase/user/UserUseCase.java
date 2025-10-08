@@ -1,6 +1,7 @@
 package co.com.anfega.usecase.user;
 
 import co.com.anfega.model.bootcamp.Bootcamp;
+import co.com.anfega.model.user.User;
 import co.com.anfega.model.user.gateways.UserInputPort;
 import co.com.anfega.model.user.gateways.UserRepository;
 import co.com.anfega.model.userbootcamp.UserBootcamp;
@@ -47,8 +48,14 @@ public class UserUseCase implements UserInputPort {
                 });
     }
 
+    @Override
+    public Mono<User> findById(Long userId) {
+        return userRepository.findById(userId)
+                .switchIfEmpty(Mono.error(new IllegalStateException("El usuario no existe")));
+    }
 
-   private Mono<Void> validateNoDateOverlap(List<Bootcamp> bootcamps) {
+
+    private Mono<Void> validateNoDateOverlap(List<Bootcamp> bootcamps) {
        boolean hasOverlap = java.util.stream.IntStream.range(0, bootcamps.size())
            .anyMatch(i -> java.util.stream.IntStream.range(i + 1, bootcamps.size())
                .anyMatch(j -> {

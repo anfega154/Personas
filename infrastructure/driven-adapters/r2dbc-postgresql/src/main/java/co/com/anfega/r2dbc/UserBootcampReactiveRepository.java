@@ -5,6 +5,6 @@ import org.springframework.data.repository.query.ReactiveQueryByExampleExecutor;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
 import reactor.core.publisher.Mono;
 
-public interface UserBootcampReactiveRepository extends ReactiveCrudRepository<UserBootcampEntity, Long>, ReactiveQueryByExampleExecutor<UserBootcampEntity> {
+public interface UserBootcampReactiveRepository extends ReactiveCrudRepository<UserBootcampEntity, Void>, ReactiveQueryByExampleExecutor<UserBootcampEntity> {
   Mono<Long> countByUserId(Long userId);
 }

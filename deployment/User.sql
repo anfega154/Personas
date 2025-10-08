@@ -9,8 +9,7 @@ INSERT INTO Persona (name, email) VALUES
                                       ('bob', 'user2@user.com');
 
 CREATE TABLE IF NOT EXISTS user_bootcamp (
-                                             id SERIAL PRIMARY KEY,
                                              user_id BIGINT NOT NULL,
                                              bootcamp_id BIGINT NOT NULL,
-                                             registered_at DATE
+                                             primary key (user_id, bootcamp_id)
 );

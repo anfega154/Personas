@@ -14,7 +14,7 @@ import java.time.LocalDate;
 public class UserBootcampReactiveRepositoryAdapter extends ReactiveAdapterOperations<
         UserBootcamp,
         UserBootcampEntity,
-        Long,
+        Void,
         UserBootcampReactiveRepository
         > implements UserBootcampRepository {
     public UserBootcampReactiveRepositoryAdapter(UserBootcampReactiveRepository repository, ObjectMapper mapper) {
@@ -33,7 +33,6 @@ public class UserBootcampReactiveRepositoryAdapter extends ReactiveAdapterOperat
                     UserBootcampEntity entity = new UserBootcampEntity();
                     entity.setUserId(ub.getUserId());
                     entity.setBootcampId(ub.getBootcampId());
-                    entity.setRegisteredAt(LocalDate.now());
                     return entity;
                 })
                 .flatMap(repository::save)
